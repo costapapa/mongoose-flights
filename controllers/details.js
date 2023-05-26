@@ -5,11 +5,11 @@ async function create(req, res, next) {
     const { id } = req.params
   
     try {
-      const movie = await Flight.findById(id)
-      console.log(Flight)
+      const flight = await Flight.findById(id)
+      console.log(flight)
   
       // Push req.body into movie.reviews
-      movie.details.push(req.body)
+      flight.details.push(req.body)
       
       // Save the parent document
       await details.save()
@@ -18,7 +18,7 @@ async function create(req, res, next) {
     }
   
     // Redirect to movie show page
-    res.redirect(`/movies/details`)
+    res.redirect(`/flights/${id}`)
   }
 
 

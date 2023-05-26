@@ -5,17 +5,17 @@
 <br><br><h2>Details</h2>
 <form id="add-detail-form" method="POST"
   action="/flights/details">
-  <label>Review:</label>
+  <label>Flight:</label>
   <textarea name="content"></textarea>
   <label>Rating:</label>
-  <select name="rating">
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
-    <option value="5" selected>5</option>
+  <select name="Airline">
+    <option value="AUS">AUS</option>
+    <option value="DFW">DFW</option>
+    <option value="DEN">DEN</option>
+    <option value="LAX">LAX</option>
+    <option value="SAN">SAN</option>
   </select>
-  <input type="submit" value="Add Review">
+  <input type="submit" value="Add Flight">
 </form>
 
 <%- include('../partials/footer') %>

@@ -4,7 +4,8 @@ module.exports = {
     new: newFlight,
     create,
     index,
-    show
+    show,
+    update
 }
 
 async function index(req, res) {
@@ -29,18 +30,34 @@ async function show(req, res, next) {
     try {
       const { id } = req.params
       const flight = await Flight.findById(id)
-  
+      console.log(flight.destination)
+      const destinations = flight.destination
       
-  
     //   for(const key in flight.toObject()){
     //     console.log(`${key[0].toUpperCase() + key.substring(1)}: ${flight[key]}`)
     //   }
   
       res.render('flights/show', {
-        flight
+        flight,
+        destinations,
       })
     } catch (err) {
       console.log('ERROR MESSAGE ->', err.message)
       next() // 
     }
   }
+
+  async function update(req, res, next) {
+    try{
+        const { id } = req.params
+        const flight = await Flight.findById(id)
+        flight.destination.push(req.body)
+        await flight.save()
+    console.log(flight)
+    res.redirect(`/flights/${id}`)
+    } catch (err) {
+        console.log('ERROR Message', err.message)
+    }
+    
+  }
+
